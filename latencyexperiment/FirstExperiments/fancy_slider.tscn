@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b70u3fuf6nul1"]
 
-[ext_resource type="Script" path="res://fancy_slider.gd" id="1_ees22"]
+[ext_resource type="Script" path="res://FirstExperiments/fancy_slider.gd" id="1_ees22"]
 
 [node name="FancySlider" type="HBoxContainer"]
 theme_override_constants/separation = 20

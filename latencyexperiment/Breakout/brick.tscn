@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh5aifn8lmknd"]
+
+[ext_resource type="Script" path="res://Breakout/brick.gd" id="1_hhcqv"]
+[ext_resource type="Texture2D" uid="uid://b58xv1joypxo5" path="res://Assets/grids/Orange/texture_09.png" id="1_jnkbu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tbiie"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85d1p"]
+albedo_texture = ExtResource("1_jnkbu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3anul"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4od4k"]
+material = SubResource("StandardMaterial3D_3anul")
+size = Vector3(3, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2q8ns"]
+size = Vector3(3, 1, 1)
+
+[node name="Brick" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_tbiie")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_hhcqv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_85d1p")
+mesh = SubResource("BoxMesh_4od4k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2q8ns")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

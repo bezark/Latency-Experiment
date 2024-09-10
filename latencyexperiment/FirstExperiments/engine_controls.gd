@@ -6,7 +6,7 @@ extends VBoxContainer
 @export var clear_color : Color
 
 func _ready():
-	fps_h_slider.value = 15
+	fps_h_slider.value = 60
 	physics_h_slider.value = 8
 	time_scale_h_slider.value = 1.0
 	RenderingServer.set_default_clear_color(clear_color)
@@ -38,5 +38,5 @@ func random_walk_sliders():
 	physics_h_slider.value += randi_range(-10, 10)
 	time_scale_h_slider.value += randf_range(-0.5,0.5)
 	
-func _process(delta: float) -> void:
-	print(Engine.get_frames_drawn())
+#func _process(delta: float) -> void:
+	#print(Engine.get_frames_drawn())
