@@ -17,7 +17,7 @@ size = Vector3(3, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2q8ns"]
 size = Vector3(3, 1, 1)
 
-[node name="Brick" type="RigidBody3D"]
+[node name="Brick" type="RigidBody3D" groups=["bricks"]]
 physics_material_override = SubResource("PhysicsMaterial_tbiie")
 contact_monitor = true
 max_contacts_reported = 1

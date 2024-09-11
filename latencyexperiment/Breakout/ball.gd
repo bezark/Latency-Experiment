@@ -3,7 +3,9 @@ extends RigidBody3D
 
 
 func _on_body_entered(body: Node) -> void:
-
-	if body.is_in_group("player"):
-		$"../EngineControls".randomize_sliders() # Very Chaotic
+#increment frames per second based on number of collisions
+	if body.is_in_group("bricks"):
+		Engine.max_fps += 2
+		print(Engine.max_fps) 
+		#$"../EngineControls".randomize_sliders() # Very Chaotic
 		#$"../EngineControls".random_walk_sliders() # less Chaotic
