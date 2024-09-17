@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq6x8nhjpwa8s"]
+[gd_scene load_steps=12 format=3 uid="uid://cq6x8nhjpwa8s"]
 
+[ext_resource type="Script" path="res://Breakout/breakout.gd" id="1_533js"]
 [ext_resource type="Texture2D" uid="uid://78pehu0r5g6w" path="res://Assets/grids/Dark/texture_04.png" id="1_q3wy5"]
 [ext_resource type="PackedScene" uid="uid://ceml6fmgfivoy" path="res://player.tscn" id="2_wet8f"]
 [ext_resource type="PackedScene" uid="uid://dljdlsydvwolj" path="res://Breakout/ball.tscn" id="3_7ar6m"]
-[ext_resource type="PackedScene" uid="uid://dh5aifn8lmknd" path="res://Breakout/brick.tscn" id="4_rp8dh"]
-[ext_resource type="PackedScene" uid="uid://bq8mc8yq40k8s" path="res://engine_controls.tscn" id="5_glih5"]
+[ext_resource type="PackedScene" uid="uid://dh5aifn8lmknd" path="res://Breakout/goodBrick.tscn" id="4_rp8dh"]
+[ext_resource type="PackedScene" uid="uid://6kt4ecafmtym" path="res://Breakout/badBrick.tscn" id="5_m7sh4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wcyle"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,6 +31,7 @@ rough = true
 bounce = 1.0
 
 [node name="Breakout" type="Node3D"]
+script = ExtResource("1_533js")
 
 [node name="Level" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -122,4 +124,14 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.076
 [node name="Brick14" parent="Bricks" instance=ExtResource("4_rp8dh")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -1.07682, 6.00625, 0)
 
-[node name="EngineControls" parent="." instance=ExtResource("5_glih5")]
+[node name="badBrick" parent="Bricks" instance=ExtResource("5_m7sh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02746, 0)
+
+[node name="badBrick2" parent="Bricks" instance=ExtResource("5_m7sh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03713, -0.00717568, 0)
+
+[node name="badBrick3" parent="Bricks" instance=ExtResource("5_m7sh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03713, 1.45077, 0)
+
+[node name="badBrick4" parent="Bricks" instance=ExtResource("5_m7sh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81683, 1.45077, 0)
