@@ -4,6 +4,16 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var mouse_sens = 0.3
+var camera_anglev=0
+
+func _input(event):  		
+	if event is InputEventMouseMotion:
+		rotate_y(deg_to_rad(-event.relative.x*mouse_sens))
+		#var changev=-event.relative.y*mouse_sens
+		#if camera_anglev+changev>-50 and camera_anglev+changev<50:
+			#camera_anglev+=changev
+			#$Camera3D.rotate_x(deg_to_rad(changev))
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -19,6 +29,7 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
