@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4nei2mfhikx0"]
+[gd_scene load_steps=3 format=3 uid="uid://b4nei2mfhikx0"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_3diu2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxx34"]
 font_size = 100
@@ -15,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3diu2")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
