@@ -17,7 +17,7 @@ height = 6.0
 [node name="Ball" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 7
-mass = 2.0
+mass = 8.0
 physics_material_override = SubResource("PhysicsMaterial_hi7t0")
 contact_monitor = true
 max_contacts_reported = 1
