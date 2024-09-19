@@ -10,7 +10,7 @@ outline_color = Color(0.0421711, 0.00193535, 3.16392e-05, 0.917647)
 shadow_size = 13
 shadow_color = Color(0, 0.0666667, 0.796078, 0.741176)
 
-[node name="Control" type="Control"]
+[node name="gameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
