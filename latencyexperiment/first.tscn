@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpl8gjpfj4ulu"]
+[gd_scene load_steps=6 format=3 uid="uid://oe8wpfu73ncc"]
 
-[ext_resource type="Texture2D" path="res://icon.svg" id="1_us5jb"]
+[ext_resource type="Texture2D" uid="uid://b1doof70q1laa" path="res://Assets/icon.svg" id="1_us5jb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tl7ah"]
 sky_top_color = Color(0.142354, 0.430525, 0.846799, 1)

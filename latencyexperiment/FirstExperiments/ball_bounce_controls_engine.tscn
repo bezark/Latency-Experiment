@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=3 uid="uid://u2tpx5wxtfjm"]
+
+[ext_resource type="Texture2D" uid="uid://78pehu0r5g6w" path="res://Assets/grids/Dark/texture_04.png" id="1_prfrh"]
+[ext_resource type="Script" path="res://Player.gd" id="2_ov0i3"]
+[ext_resource type="Script" path="res://FirstExperiments/ball_spawner.gd" id="4_0rnbe"]
+[ext_resource type="Script" path="res://FirstExperiments/engine_controls.gd" id="5_w53ye"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rou47"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_j6pu3"]
+sky_material = SubResource("ProceduralSkyMaterial_rou47")
+
+[sub_resource type="Environment" id="Environment_wwuv0"]
+background_mode = 2
+sky = SubResource("Sky_j6pu3")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4kd6"]
+albedo_texture = ExtResource("1_prfrh")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yaou4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ovnrt"]
+
+[node name="FPSPhysicsTimeScaleExperiment" type="Node3D"]
+
+[node name="Level" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_wwuv0")
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_x4kd6")
+
+[node name="Wall" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -50)
+use_collision = true
+size = Vector3(100, 50, 1)
+material = SubResource("StandardMaterial3D_x4kd6")
+
+[node name="Wall2" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 48)
+use_collision = true
+size = Vector3(100, 50, 1)
+material = SubResource("StandardMaterial3D_x4kd6")
+
+[node name="Wall3" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 49, 25, -0.999998)
+use_collision = true
+size = Vector3(100, 50, 1)
+material = SubResource("StandardMaterial3D_x4kd6")
+
+[node name="Wall4" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49, 25, -1)
+use_collision = true
+size = Vector3(100, 50, 1)
+material = SubResource("StandardMaterial3D_x4kd6")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.24392)
+script = ExtResource("2_ov0i3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_yaou4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_ovnrt")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2.61172, 3.00577)
+
+[node name="PhysicsObjects" type="Node3D" parent="."]
+
+[node name="BallSpawner" type="Node3D" parent="PhysicsObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69304, 0)
+script = ExtResource("4_0rnbe")
+number_of_marbles = 100
+
+[node name="EngineControls" type="VBoxContainer" parent="."]
+offset_top = 28.0
+offset_right = 301.0
+offset_bottom = 107.0
+theme_override_constants/separation = 12
+script = ExtResource("5_w53ye")
+
+[node name="FPS" type="HBoxContainer" parent="EngineControls"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="EngineControls/FPS"]
+layout_mode = 2
+text = "FPS
+"
+
+[node name="Value" type="Label" parent="EngineControls/FPS"]
+layout_mode = 2
+text = "0	
+"
+
+[node name="HSlider" type="HSlider" parent="EngineControls/FPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+min_value = 1.0
+max_value = 120.0
+value = 1.0
+
+[node name="PhysicsSteps" type="HBoxContainer" parent="EngineControls"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="EngineControls/PhysicsSteps"]
+layout_mode = 2
+text = "PhysSteps
+"
+
+[node name="Value" type="Label" parent="EngineControls/PhysicsSteps"]
+layout_mode = 2
+text = "0	
+"
+
+[node name="HSlider" type="HSlider" parent="EngineControls/PhysicsSteps"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+max_value = 1000.0
+
+[node name="TimeScale" type="HBoxContainer" parent="EngineControls"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="EngineControls/TimeScale"]
+layout_mode = 2
+text = "Time Scale
+"
+
+[node name="Value" type="Label" parent="EngineControls/TimeScale"]
+layout_mode = 2
+text = "0	
+"
+
+[node name="HSlider" type="HSlider" parent="EngineControls/TimeScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+min_value = -2.0
+max_value = 2.0
+step = 0.01
+
+[connection signal="value_changed" from="EngineControls/FPS/HSlider" to="EngineControls" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="EngineControls/PhysicsSteps/HSlider" to="EngineControls" method="_on_phys_h_slider_value_changed"]
+[connection signal="value_changed" from="EngineControls/TimeScale/HSlider" to="EngineControls" method="_on_timescale_h_slider_value_changed"]
