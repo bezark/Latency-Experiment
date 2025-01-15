@@ -1,19 +1,6 @@
 # Latency Experiment
 
 
-This is an experiment.
- 
-FPS is the genre and
-FPS as national security
-
-
-
-Single player becasue it feels a LOT less rational to create a single player maxed out game.
-
-moon cat
-
----
-
 # Decided
 - it's single player FPS which disrupts Frames per second
 - Building it in Godot
@@ -33,3 +20,19 @@ moon cat
 - How much do the disruptions the player experience emerge from aesthetic choices we impose on the player, vs how much is it about the literal hardware and software constraints
 - Is the peice about energy consumption?
 - Eink vs normal monitor? How is it displayed?
+
+
+
+
+# Scratch 
+FPS is the genre and
+FPS as national security
+
+
+Single player becasue it feels a LOT less rational to create a single player maxed out game.
+
+moon cat
+
+---
+
+
